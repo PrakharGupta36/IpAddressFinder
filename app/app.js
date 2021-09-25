@@ -19,19 +19,34 @@ submit.onclick = () => {
     .then((response) => response.json())
     .then((data) => {
       ipAddressText.textContent = data.ip;
-      isp.textContent = data.org;
+      if (data.org === null) {
+        isp.textContent = "Null"
+      } else {
+        isp.textContent = data.org;
+      }
       locationText.textContent = `${data.city} , ${data.region}, ${data.country_name}`;
       timezoneText.textContent = data.timezone;
       console.log(lat, lan);
       console.log(data);
       mapboxgl.accessToken =
         "pk.eyJ1IjoicHJha2hhcjM2IiwiYSI6ImNrdHpha296dzJ6MGkyb25xaDN3aDl6MTAifQ.xq9BFA0uvUt6MoXPD-hpSA";
+
       var map = new mapboxgl.Map({
         container: "map", // container ID
         style: "mapbox://styles/mapbox/streets-v11", // style URL
         center: [data.longitude, data.latitude], // latitude and longitude starting position
         zoom: 9,
+
       });
+      const marker = new mapboxgl.Marker()
+        .setLngLat([data.longitude, data.latitude])
+        .addTo(map);
+      marker = new mapboxgl.Marker({
+        color: "#FF0000",
+        draggable: true,
+      })
+        .setLngLat([data.longitude, data.latitude])
+        .addTo(map);
       map.addControl(new mapboxgl.NavigationControl());
       map.addControl(
         new mapboxgl.GeolocateControl({
@@ -47,6 +62,7 @@ submit.onclick = () => {
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoicHJha2hhcjM2IiwiYSI6ImNrdHpha296dzJ6MGkyb25xaDN3aDl6MTAifQ.xq9BFA0uvUt6MoXPD-hpSA";
+
 var map = new mapboxgl.Map({
   container: "map", // container ID
   style: "mapbox://styles/mapbox/streets-v11", // style URL
@@ -54,6 +70,13 @@ var map = new mapboxgl.Map({
   zoom: 9,
   renderingMode: "3d",
 });
+
+marker = new mapboxgl.Marker({
+  color: "#FF0000",
+  draggable: true,
+})
+  .setLngLat([lat, lan])
+  .addTo(map);
 map.addControl(new mapboxgl.NavigationControl());
 map.addControl(
   new mapboxgl.GeolocateControl({
