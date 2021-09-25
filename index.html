@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IP Address Tracker</title>
+    <link rel="stylesheet" href="app/style.css" />
+    <link rel="icon" href="assets/images/icon.svg" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <img src="assets/images/pattern-bg.png" id="backgroundHeader" alt="" />
+    <header>
+      <h1>IP Tracker Address</h1>
+      <div>
+        <input
+          type="text"
+          name="text"
+          id="input"
+          placeholder="Enter an IP Address"
+        />
+        <button id="submit">
+          <img src="assets/images/icon-arrow.svg" alt="" />
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="details">
+        <div>
+          <p>Timezone</p>
+          <p class="big" id="ipAddressText"></p>
+        </div>
+        <div>
+          <p>Location</p>
+          <p class="big" id="location"></p>
+        </div>
+        <div>
+          <p>Zip</p>
+          <p class="big" id="timeZone"></p>
+        </div>
+        <div>
+          <p>ISP</p>
+          <p class="big" id="isp"></p>
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </main>
+
+    <script src="app/app.js"></script>
+    <script></script>
+  </body>
+</html>
