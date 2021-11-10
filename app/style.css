@@ -9,14 +9,12 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   margin: 0;
-
 }
 
 header {
   display: grid;
   place-content: center;
   color: white;
-
 }
 
 header > div {
